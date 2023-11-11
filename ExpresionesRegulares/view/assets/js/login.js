@@ -1,0 +1,121 @@
+let correo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+let usuario = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
+let contrasena = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
+
+let inputs = document.querySelectorAll("input");
+// console.log(inputs)
+inputs.forEach((input) => {
+  input.addEventListener("keyup", validarCampos);
+});
+
+function validarCampos(e) {
+  // if(e.target.value == 'f'){
+  //     console.log('Holi...')
+  // }
+  // console.log(e)
+  switch (e.target.name) {
+    case "usuario":
+      if (usuario.test(e.target.value)) {
+        console.log("Cumple con la expresion");
+        // document.getElementById('usuario').style.backgroundColor = 'green'
+        document.getElementById("usuario").classList.add("correcto");
+        document.getElementById("usuario").classList.remove("incorrecto");
+      } else {
+        console.log("No cumple con la expresion");
+        // document.getElementById('usuario').style.backgroundColor = 'red'
+        document.getElementById("usuario").classList.add("incorrecto");
+        document.getElementById("usuario").classList.remove("correcto");
+      }
+      break;
+    case "contrasena":
+      if (contrasena.test(e.target.value)) {
+        console.log("Cumple con la expresion");
+        // document.getElementById('usuario').style.backgroundColor = 'green'
+        document.getElementById("contrasena").classList.add("correcto");
+        document.getElementById("contrasena").classList.remove("incorrecto");
+      } else {
+        console.log("No cumple con la expresion");
+        // document.getElementById('usuario').style.backgroundColor = 'red'
+        document.getElementById("contrasena").classList.add("incorrecto");
+        document.getElementById("contrasena").classList.remove("correcto");
+      }
+      break;
+    case "correo":
+      if (correo.test(e.target.value)) {
+        console.log("Cumple con la expresion");
+        // document.getElementById('usuario').style.backgroundColor = 'green'
+        document.getElementById("correo").classList.add("correcto");
+        document.getElementById("correo").classList.remove("incorrecto");
+      } else {
+        console.log("No cumple con la expresion");
+        // document.getElementById('usuario').style.backgroundColor = 'red'
+        document.getElementById("correo").classList.add("incorrecto");
+        document.getElementById("correo").classList.remove("correcto");
+      }
+      break;
+  }
+}
+
+// let btnIniciar = document.getElementById('btnIniciar')
+let btnIniciar = document.querySelector("#btnIniciar");
+btnIniciar.addEventListener("click", iniciarSesion);
+function iniciarSesion() {
+  let usuario = document.getElementById("usuario").value;
+  let contrasena = document.getElementById("contrasena").value;
+  let correo = document.getElementById("correo").value;
+  if (usuario == "Jaime") {
+    // setTimeout(function(){
+    document.getElementById("bienvenide").style.display = "flex";
+    // },1000)
+    setTimeout(() => {
+      document.getElementById("login").style.display = "none";
+      document.getElementById("panel").style.display = "flex";
+      document.getElementById("bienvenide").style.display = "none";
+    }, 3000);
+  } else {
+    alert("Error de credenciales");
+  }
+}
+
+let cerrarSesion = document.getElementById("cerrarSesion");
+cerrarSesion.addEventListener("click", cerrandoSesion);
+function cerrandoSesion() {
+  document.getElementById("login").style.display = "block";
+  document.getElementById("panel").style.display = "none";
+}
+let listar=document.querySelector('#listar')
+listar.addEventListener('click',listarCosas)
+function listarCosas(){
+  document.getElementById('sectionListar').style.zIndex='3'
+  document.getElementById('sectionBuscar').style.zIndex='2'
+  document.getElementById('SectionFiltrar').style.zIndex='2'
+}
+let buscar=document.querySelector('#buscar')
+listar.addEventListener('click',buscarCosas)
+function buscarCosas(){
+  document.getElementById('sectionListar').style.zIndex='2'
+  document.getElementById('sectionBuscar').style.zIndex='3'
+  document.getElementById('SectionFiltrar').style.zIndex='2'
+}
+let filtrar=document.querySelector('#filtrar')
+listar.addEventListener('click',filtrarCosas)
+function filtrarCosas(){                                                  
+  document.getElementById('sectionListar').style.zIndex='2'
+  document.getElementById('sectionBuscar').style.zIndex='2'
+  document.getElementById('SectionFiltrar').style.zIndex='3'
+}
+// let numeros = [1,2,3,4]
+// let letras = ['A','B','C']
+// let suma = [...numeros,...letras]
+// console.log(suma)
+
+// let funcionUno = () => {
+//   console.log('Esto es la primera funcion')
+// }
+
+// function funcionDos(callback){
+//   console.log('Esto es la segunda funcion')
+//   callback()
+// }
+
+// funcionDos(funcionUno)

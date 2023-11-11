@@ -1,0 +1,27 @@
+.cuadroFormulario{
+    justify-content: center;
+    display: flex;
+    align-items: space-between;
+    margin: 10px;
+}
+input{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+.boton{
+    display: flex;
+    justify-content: center;
+
+}
+
+.section{
+    background-color: rgb(161, 155, 161);
+    border: 2px solid rgb(0, 0, 0);
+    width: 500px;
+    height: 400px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
